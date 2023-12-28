@@ -21,5 +21,8 @@ jobs:
       - name: Instalar dependências
         run: pipenv sync --dev
 
+      - name: Checar vulnerabilidades
+        run: pipenv check
+
       - name: Rodar flake8
         run: pipenv run flake8
