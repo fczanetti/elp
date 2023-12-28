@@ -1,0 +1,25 @@
+name: workflow
+
+on: push
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+          architecture: x64
+
+      - name: Instalar pipenv
+        run: pip install pipenv
+
+      - name: Instalar dependências
+        run: pipenv sync --dev
+
+      - name: Rodar flake8
+        run: pipenv run flake8
