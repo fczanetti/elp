@@ -27,6 +27,8 @@ SECRET_KEY = 'django-insecure-mnj9%gjau8lq3v!8^nq=*42c)_hnx)g-k%!3s0_$9!ys63b(g=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CSRF_TRUSTED_ORIGINS = ['https://engplat.fly.dev']
+
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # Application definition
