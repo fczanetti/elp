@@ -16,4 +16,4 @@ COPY . /code
 
 EXPOSE 8000
 
-CMD ["gunicorn", "--bind", ":8000", "--workers", "2", "engplat.wsgi"]
+ENTRYPOINT ["./start.sh"]
