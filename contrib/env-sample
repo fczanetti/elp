@@ -1,1 +1,4 @@
 ALLOWED_HOSTS = localhost, 127.0.0.1,
+SECRET_KEY = secret
+DEBUG = True
+DATABASE_URL = postgres://postuser:postpass@localhost:5432/postci
