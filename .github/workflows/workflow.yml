@@ -10,7 +10,7 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_PASSWORD: pospass
+          POSTGRES_PASSWORD: postpass
           POSTGRES_USER: postuser
         options: >-
           --health-cmd pg_isready
