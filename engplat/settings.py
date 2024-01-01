@@ -77,10 +77,11 @@ WSGI_APPLICATION = 'engplat.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+SQLITE_DB = 'sqlite:///' + str(BASE_DIR / 'db.sqlite3')
+
 DATABASES = {
     'default': config(
         'DATABASE_URL',
-        default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
         cast=db_url
     )
 }
