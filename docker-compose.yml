@@ -1,7 +1,7 @@
 services:
 
   database:
-    container_name: engplat_database
+    container_name: engplat_db
     image: postgres
     restart: no
     volumes:
@@ -10,6 +10,6 @@ services:
       - LC_ALL=C.UTF-8
       - POSTGRES_PASSWORD=maindbpass
       - POSTGRES_USER=maindbuser
-      - POSTGRES_DB=maindb
+      - POSTGRES_DB=engpmaindb
     ports:
       - 5435:5432
