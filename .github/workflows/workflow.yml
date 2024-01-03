@@ -45,21 +45,21 @@ jobs:
       - name: Setup env
         run: cp contrib/env-sample .env
 
-      - name: Instalar Codecov
-        run: pipenv install codecov
+#      - name: Instalar Codecov
+#        run: pipenv install codecov
 
       - name: Testes automáticos
         run: pipenv run pytest --cov=engplat
 
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
 #      - name: Upload coverage reports to Codecov
+#        uses: codecov/codecov-action@v3
 #        env:
 #          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-#        run: pipenv run codecov
+
+      - name: Upload coverage reports to Codecov
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: pipenv run codecov
 
   deploy:
     needs: ci
