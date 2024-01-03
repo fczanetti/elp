@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'collectfast',
     'django.contrib.staticfiles',
+    'engplat.base',
 ]
 
 MIDDLEWARE = [
