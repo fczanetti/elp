@@ -51,6 +51,9 @@ jobs:
       - name: Testes automáticos
         run: pipenv run pytest --cov=engplat
 
+      - name: Gerar relatório
+        run: pipenv run codecov
+
       - uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
