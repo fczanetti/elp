@@ -1,13 +1,26 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>English Platform</title>
-</head>
-<body>
-<h1>English Videos</h1>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <title>English Platform</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-expand-lg navbar-light border-bottom p-3">
+                        <a class="navbar-brand" href="{% url 'base:home' %}">Brand</a>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
