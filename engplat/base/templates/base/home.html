@@ -6,36 +6,72 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
         <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
         <title>English Platform</title>
     </head>
     <body>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <nav class="navbar navbar-expand-lg navbar-light border-bottom p-3">
-                        <a class="navbar-brand" href="{% url 'base:home' %}">Brand</a>
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        </div>
-                    </nav>
-                    <div class="jumbotron mt-3" id="jumbo1">
-                        <img src="{% static 'img/foto-teste.jpg' %}" alt="Foto do professor" class=""
-                             id="fotoprof">
-                        <p id="prgprof">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-                            eligendi maxime similique sint sit. Aspernatur blanditiis laboriosam
-                            minus porro vitae? Architecto dolores esse facere facilis quae quis
-                            quod, repudiandae voluptatem.
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-                            eligendi maxime similique sint sit. Aspernatur blanditiis laboriosam
-                            minus porro vitae? Architecto dolores esse facere facilis quae quis
-                            quod, repudiandae voluptatem.
-                        </p>
+        <nav class="navbar navbar-expand-lg navbar-light border-bottom p-3">
+            <a class="navbar-brand" href="{% url 'base:home' %}">Brand</a>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"></div>
+        </nav>
+        <section id="maincontent">
+            <div id="intro">
+                <img src="{% static 'img/foto-teste.jpg' %}" alt="Foto do professor" class=""
+                     id="fotoprof">
+                <p id="prgprof">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
+                    eligendi maxime similique sint sit. Aspernatur blanditiis laboriosam
+                    minus porro vitae? Architecto dolores esse facere facilis quae quis
+                    quod, repudiandae voluptatem.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
+                    eligendi maxime similique sint sit. Aspernatur blanditiis laboriosam
+                    minus porro vitae? Architecto dolores esse facere facilis quae quis
+                    quod, repudiandae voluptatem.
+                </p>
+            </div>
+            <div id="contents">
+                <div class="content">
+                    <img src="{% static 'img/podcast.jpeg' %}" alt="Foto relacionada aos podcasts">
+                    <div class="txt-content">
+                        <h2>Podcasts</h2>
+                        <p>Texto introdutório relacionado aos podcasts</p>
+                        <button class="contentbutton"><a href="#">More details</a></button>
+                    </div>
+                </div>
+                <div class="content">
+                    <img src="{% static 'img/levtest.jpeg' %}" alt="Foto relacionada à testes de nivelamento">
+                    <div class="txt-content">
+                        <h2>Leveling test</h2>
+                        <p>Algum texto explicativo sobre o teste</p>
+                        <button class="contentbutton"><a href="#">More details</a></button>
+                    </div>
+                </div>
+                <div class="content">
+                    <img src="" alt="Foto relacionada ao conteúdo">
+                    <div class="txt-content">
+                        <h2>Free content</h2>
+                        <p>Texto introdutório relacionado ao conteúdo</p>
+                        <button class="contentbutton"><a href="#">More details</a></button>
+                    </div>
+                </div>
+                <div class="content">
+                    <img src="" alt="Foto relacionada ao conteúdo">
+                    <div class="txt-content">
+                        <h2>Free content</h2>
+                        <p>Texto introdutório relacionado ao conteúdo</p>
+                        <button class="contentbutton"><a href="#">More details</a></button>
+                    </div>
+                </div>
+                <div class="content">
+                    <img src="" alt="Foto relacionada ao conteúdo">
+                    <div class="txt-content">
+                        <h2>Free content</h2>
+                        <p>Texto introdutório relacionado ao conteúdo</p>
+                        <button class="contentbutton"><a href="#">More details</a></button>
                     </div>
                 </div>
             </div>
-
-        </div>
+        </section>
     </body>
 </html>
