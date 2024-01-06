@@ -16,3 +16,11 @@ def test_status_code_home(resp):
 
 def test_link_home_navbar(resp):
     assert_contains(resp, f'href="{reverse("base:home")}"')
+
+
+def test_cont_adic_podcast(resp):
+    assert_contains(resp, '<h2>Podcasts</h2>')
+
+
+def test_cont_adic_lev_test(resp):
+    assert_contains(resp, '<h2>Leveling test</h2>')
