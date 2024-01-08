@@ -1,21 +1,8 @@
+{% extends 'base/base.html' %}
 {% load static %}
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{% static 'css/style1.css' %}" rel="stylesheet">
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <title>English Platform</title>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light border-bottom p-3">
-        <a class="navbar-brand" href="{% url 'base:home' %}">Brand</a>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"></div>
-    </nav>
+{% block title %}<title>English Platform</title>{% endblock %}
+
+{% block maincontent %}
     <section id="maincontent">
         <div id="intro">
             <img src="{% static 'img/foto-teste.jpg' %}" alt="Foto do professor" class=""
@@ -74,17 +61,4 @@
             </div>
         </div>
     </section>
-    <footer>
-        <section id="footer-top-section">
-            <a href="" target="_blank"><i class="bi bi-instagram icon"></i></a>
-            <a href="" target="_blank"><i class="bi bi-facebook icon"></i></a>
-            <a href="https://www.youtube.com/@adiadi8803" target="_blank"><i class="bi bi-youtube icon"></i></a>
-            <a href="mailto:fczanetti@hotmail.com"><i class="bi bi-envelope icon"></i></i></a>
-        </section>
-        <section id="footer-bottom-section">
-            <p id="footerp1">São João da Boa Vista - São Paulo</p>
-            <p id="footerp2">Todos direitos reservados</p>
-        </section>
-    </footer>
-</body>
-</html>
+{% endblock %}
