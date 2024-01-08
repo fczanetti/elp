@@ -28,3 +28,7 @@ def test_cont_adic_lev_test(resp):
 
 def test_links_redes_sociais(resp):
     assert_contains(resp, 'href="https://www.youtube.com/@adiadi8803"')
+
+
+def test_link_podcasts(resp):
+    assert_contains(resp, f'href="{reverse("podcasts:podcasts")}"')

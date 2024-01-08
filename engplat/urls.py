@@ -21,6 +21,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('engplat.base.urls')),
+    path('podcasts/', include('engplat.podcasts.urls')),
 ]
 
 if settings.DEBUG:
