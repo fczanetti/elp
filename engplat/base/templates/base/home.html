@@ -3,7 +3,6 @@
 {% block title %}<title>English Platform</title>{% endblock %}
 
 {% block maincontent %}
-    <section id="maincontent">
         <div id="intro">
             <img src="{% static 'img/foto-teste.jpg' %}" alt="Foto do professor" class=""
                  id="fotoprof">
@@ -24,7 +23,11 @@
                 <div class="txt-content">
                     <h2>Podcasts</h2>
                     <p>Texto introdutório relacionado aos podcasts</p>
-                    <button class="contentbutton"><a href="#">More details</a></button>
+
+
+                    <a href="{% url 'podcasts:podcasts' %}"><button class="contentbutton">More details</button></a>
+
+
                 </div>
             </div>
             <div class="content">
@@ -32,7 +35,7 @@
                 <div class="txt-content">
                     <h2>Leveling test</h2>
                     <p>Algum texto explicativo sobre o teste</p>
-                    <button class="contentbutton"><a href="#">More details</a></button>
+                    <a href="#"><button class="contentbutton">More details</button></a>
                 </div>
             </div>
             <div class="content">
@@ -40,7 +43,7 @@
                 <div class="txt-content">
                     <h2>Free content</h2>
                     <p>Texto introdutório relacionado ao conteúdo</p>
-                    <button class="contentbutton"><a href="#">More details</a></button>
+                    <a href="#"><button class="contentbutton">More details</button></a>
                 </div>
             </div>
             <div class="content">
@@ -48,7 +51,7 @@
                 <div class="txt-content">
                     <h2>Free content</h2>
                     <p>Texto introdutório relacionado ao conteúdo</p>
-                    <button class="contentbutton"><a href="#">More details</a></button>
+                    <a href="#"><button class="contentbutton">More details</button></a>
                 </div>
             </div>
             <div class="content">
@@ -56,9 +59,8 @@
                 <div class="txt-content">
                     <h2>Free content</h2>
                     <p>Texto introdutório relacionado ao conteúdo</p>
-                    <button class="contentbutton"><a href="#">More details</a></button>
+                    <a href="#"><button class="contentbutton">More details</button></a>
                 </div>
             </div>
         </div>
-    </section>
 {% endblock %}

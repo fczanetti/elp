@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'collectfast',
     'django.contrib.staticfiles',
     'engplat.base',
+    'engplat.podcasts',
 ]
 
 MIDDLEWARE = [
