@@ -5,4 +5,9 @@
 
 {% block maincontent %}
     <h1>Podcasts</h1>
+    <ol>
+        {% for podcast in podcasts %}
+        <li>{{ podcast.titulo }}</li>
+        {% endfor %}
+    </ol>
 {% endblock %}
