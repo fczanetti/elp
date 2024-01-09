@@ -2,6 +2,10 @@ from django.shortcuts import render
 from engplat.podcasts.models import Podcast
 
 
-def podcasts(request):
+def indice_podcasts(request):
     podcasts = Podcast.objects.all()
-    return render(request, 'podcasts/podcasts.html', context={'podcasts': podcasts})
+    return render(request, 'podcasts/indice_podcasts.html', context={'podcasts': podcasts})
+
+
+def detalhe_podcast(request, slug):
+    return render(request, 'podcasts/detalhe_podcast.html')

@@ -31,4 +31,4 @@ def test_links_redes_sociais(resp):
 
 
 def test_link_podcasts(resp):
-    assert_contains(resp, f'href="{reverse("podcasts:podcasts")}"')
+    assert_contains(resp, f'href="{reverse("podcasts:indice")}"')
