@@ -13,7 +13,7 @@ def podcasts(db):
 
 @pytest.fixture
 def resp(client, podcasts):
-    return client.get(reverse('podcasts:podcasts'))
+    return client.get(reverse('podcasts:indice'))
 
 
 def test_status_code(resp):
