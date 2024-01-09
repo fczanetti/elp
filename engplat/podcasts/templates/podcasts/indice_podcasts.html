@@ -1,13 +1,15 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
-{% block title %}<title>Podcasts</title>{% endblock %}
+{% block title %}<title>Podcasts - Índice</title>{% endblock %}
 
 {% block maincontent %}
     <h1>Podcasts</h1>
     <ol>
         {% for podcast in podcasts %}
-        <li>{{ podcast.titulo }}</li>
+            <li><a href="{{ podcast.get_absolute_url }}">{{ podcast.titulo }}</a></li>
+        {% empty %}
+            <li>Não há podcasts para mostrar.</li>
         {% endfor %}
     </ol>
 {% endblock %}
