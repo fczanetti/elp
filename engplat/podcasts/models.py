@@ -13,4 +13,4 @@ class Podcast(models.Model):
         return self.titulo
 
     def get_absolute_url(self):
-        return reverse('podcasts:podcast', kwargs={'slug': self.slug})
+        return reverse('podcasts:detalhe', kwargs={'slug': self.slug})

@@ -27,3 +27,8 @@ def test_titulo_conteudo_principal(resp):
 def test_lista_de_podcasts(resp, podcasts):
     for podcast in podcasts:
         assert_contains(resp, f'{podcast.titulo}')
+
+
+def test_links_detalhe_podcasts(resp, podcasts):
+    for podcast in podcasts:
+        assert_contains(resp, f'href="{reverse("podcasts:detalhe", args=(podcast.slug,))}"')
