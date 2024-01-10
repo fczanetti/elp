@@ -8,4 +8,5 @@ def indice_podcasts(request):
 
 
 def detalhe_podcast(request, slug):
-    return render(request, 'podcasts/detalhe_podcast.html')
+    podcast = Podcast.objects.get(slug=slug)
+    return render(request, 'podcasts/detalhe_podcast.html', context={'podcast': podcast})

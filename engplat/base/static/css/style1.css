@@ -7,6 +7,27 @@
     margin: 20px auto;
 }
 
+#videodiv {
+    padding: 26.34% 0 0 0;
+    position:relative;
+}
+
+#videoframe {
+    position: absolute;
+    top:0;
+    left:0;
+    width:45%;
+    height:100%;
+}
+
+#titulovideo {
+    width: 45%;
+}
+
+#descricaovideo {
+    width: 45%;
+}
+
 #intro {
     display: flex;
     margin-bottom: 30px;
@@ -100,6 +121,22 @@
 @media screen and (max-width: 1000px) {
     #intro {
         flex-direction: column;
+    }
+
+    #videodiv {
+        padding: 56.34% 0 0 0;
+    }
+
+    #videoframe {
+        width: 100%;
+    }
+
+    #titulovideo {
+        width: 100%;
+    }
+
+    #descricaovideo {
+        width: 100%;
     }
 
     #fotoprof {
