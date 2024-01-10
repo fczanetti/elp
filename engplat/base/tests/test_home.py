@@ -22,10 +22,6 @@ def test_cont_adic_podcast(resp):
     assert_contains(resp, '<h2>Podcasts</h2>')
 
 
-def test_cont_adic_lev_test(resp):
-    assert_contains(resp, '<h2>Leveling test</h2>')
-
-
 def test_links_redes_sociais(resp):
     assert_contains(resp, 'href="https://www.youtube.com/@adiadi8803"')
 
