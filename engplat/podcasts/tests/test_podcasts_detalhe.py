@@ -1,7 +1,7 @@
 import pytest
 from django.urls import reverse
-# from engplat.django_assertions import assert_contains
 from model_bakery import baker
+from engplat.django_assertions import assert_contains
 from engplat.podcasts.models import Podcast
 
 
@@ -18,3 +18,15 @@ def resp(client, podcast):
 
 def test_status_code_detalhe_podcast(resp):
     assert resp.status_code == 200
+
+
+def test_titulo_podcast(resp, podcast):
+    assert_contains(resp, f'{podcast.titulo}')
+
+
+def test_video_url_podcast_detalhe(resp, podcast):
+    assert_contains(resp, f'https://www.youtube.com/embed/{podcast.plat_id}')
+
+
+def test_descricao_podcast(resp, podcast):
+    assert_contains(resp, f'{podcast.descricao}')
