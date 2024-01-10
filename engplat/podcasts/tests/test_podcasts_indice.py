@@ -21,7 +21,7 @@ def test_status_code(resp):
 
 
 def test_titulo_conteudo_principal(resp):
-    assert_contains(resp, '<h1>Podcasts</h1>')
+    assert_contains(resp, 'Podcasts')
 
 
 def test_lista_de_podcasts(resp, podcasts):

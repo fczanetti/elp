@@ -13,9 +13,9 @@
             <title></title>
         {% endblock %}
     </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light border-bottom p-3">
-            <a class="navbar-brand" href="{% url 'base:home' %}">Brand</a>
+    <body id="body">
+        <nav class="navbar navbar-expand-lg navbar-light border-bottom p-3" id="navbar">
+            <a class="navbar-brand text-light" href="{% url 'base:home' %}">Brand</a>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"></div>
         </nav>
 
@@ -24,7 +24,7 @@
             {% endblock %}
         </section>
 
-        <footer>
+        <footer id="footer">
             <section id="footer-top-section">
                 <a href="" target="_blank"><i class="bi bi-instagram icon"></i></a>
                 <a href="" target="_blank"><i class="bi bi-facebook icon"></i></a>
