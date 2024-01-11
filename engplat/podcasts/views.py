@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from engplat.podcasts.models import Podcast
 
 
@@ -8,5 +8,5 @@ def indice_podcasts(request):
 
 
 def detalhe_podcast(request, slug):
-    podcast = Podcast.objects.get(slug=slug)
+    podcast = get_object_or_404(Podcast, slug=slug)
     return render(request, 'podcasts/detalhe_podcast.html', context={'podcast': podcast})
