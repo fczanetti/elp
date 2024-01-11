@@ -16,6 +16,15 @@ def resp(client, podcast):
     return client.get(reverse('podcasts:detalhe', args=(podcast.slug,)))
 
 
+@pytest.fixture
+def resp_video_inexistente(client, podcast):
+    return client.get(reverse('podcasts:detalhe', args=(podcast.slug+'video_nao_existente',)))
+
+
+def test_video_inexistente(resp_video_inexistente):
+    assert resp_video_inexistente.status_code == 404
+
+
 def test_status_code_detalhe_podcast(resp):
     assert resp.status_code == 200
 
