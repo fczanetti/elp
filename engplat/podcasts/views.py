@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
+from engplat.podcasts import facade
 from engplat.podcasts.models import Podcast
 
 
 def indice_podcasts(request):
-    podcasts = Podcast.objects.order_by('-data_gravacao').all()
+    podcasts = facade.buscar_podcasts_ordenados()
     return render(request, 'podcasts/indice_podcasts.html', context={'podcasts': podcasts})
 
 
