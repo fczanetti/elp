@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'engplat.base',
     'engplat.podcasts',
+    'ordered_model',
 ]
 
 MIDDLEWARE = [

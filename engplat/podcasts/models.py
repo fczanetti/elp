@@ -1,8 +1,9 @@
 from django.db import models
 from django.urls import reverse
+from ordered_model.models import OrderedModel
 
 
-class Podcast(models.Model):
+class Podcast(OrderedModel):
     titulo = models.CharField(max_length=64)
     slug = models.SlugField(unique=True)
     data_gravacao = models.DateField()

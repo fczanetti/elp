@@ -3,7 +3,7 @@ from engplat.podcasts.models import Podcast
 
 
 def indice_podcasts(request):
-    podcasts = Podcast.objects.all()
+    podcasts = Podcast.objects.order_by('-data_gravacao').all()
     return render(request, 'podcasts/indice_podcasts.html', context={'podcasts': podcasts})
 
 
