@@ -129,6 +129,7 @@
     margin: 10px;
     font-size: 2rem;
     color: white;
+    font-style: normal;
 }
 
 #indexlist {
@@ -145,6 +146,18 @@
     position: absolute;
     width: 100%;
     bottom: 0;
+}
+
+#itemlistamodulos {
+    background-color: #F1F2F6;
+    list-style: none;
+    width: 45%;
+    padding: 1rem 1rem 0.1rem 1rem;
+}
+
+#itemlistamodulos > a {
+    text-decoration: none;
+    color: #3E627A;
 }
 
 @media screen and (max-width: 1000px) {
@@ -206,6 +219,10 @@
     }
 
     #indexlist {
+        width: 100%;
+    }
+
+    #itemlistamodulos {
         width: 100%;
     }
 }

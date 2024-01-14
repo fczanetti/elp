@@ -5,15 +5,20 @@
 
 {% block maincontent %}
     <h1 class="pb-3">Módulos</h1>
-    <ol class="ps-3 rounded" id="indexlist">
+    <ul class="p-0">
         {% for modulo in modulos %}
-            <li>{{ modulo.titulo }}</li>
-            <li>{{ modulo.descricao }}</li>
-            <li>{{ modulo.publico }}</li>
-            <li>{{ modulo.get_absolute_url }}</li>
+        <li id="itemlistamodulos" class="rounded">
+            <a href="{{ modulo.get_absolute_url }}">
+                <div>
+                    <h4>{{ modulo.titulo }}</h4>
+                    <p>{{ modulo.descricao }}</p>
+                    <p><b>Público: </b>{{ modulo.publico }}</p>
+                </div>
+            </a>
+        </li>
         <br>
         {% empty %}
             <li>Não há módulos para mostrar.</li>
         {% endfor %}
-    </ol>
+    </ul>
 {% endblock %}
