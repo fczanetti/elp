@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('engplat.base.urls')),
     path('podcasts/', include('engplat.podcasts.urls')),
+    path('modulos/', include('engplat.modulos.urls')),
 ]
 
 if settings.DEBUG:
