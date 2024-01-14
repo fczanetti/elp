@@ -6,6 +6,13 @@
 {% block maincontent %}
     <h1 class="pb-3">Módulos</h1>
     <ol class="ps-3 rounded" id="indexlist">
-
+        {% for modulo in modulos %}
+            <li>{{ modulo.titulo }}</li>
+            <li>{{ modulo.descricao }}</li>
+            <li>{{ modulo.publico }}</li>
+            <li>{{ modulo.get_absolute_url }}</li>
+        {% empty %}
+            <li>Não há módulos para mostrar.</li>
+        {% endfor %}
     </ol>
 {% endblock %}
