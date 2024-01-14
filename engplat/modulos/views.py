@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from engplat.modulos.models import Modulo
+from engplat.modulos import facade
 
 
 def indice_modulos(request):
-    modulos = Modulo.objects.all()
+    modulos = facade.listar_modulos_ordenados()
     return render(request, 'modulos/indice_modulos.html', {'modulos': modulos})
 
 
