@@ -13,4 +13,18 @@ class Modulo(OrderedModel):
         return self.titulo
 
     def get_absolute_url(self):
-        return reverse('modulos:detalhe', args=(self.slug,))
+        return reverse('modulos:detalhe_modulo', args=(self.slug,))
+
+
+class Aula(OrderedModel):
+    titulo = models.CharField(max_length=64)
+    slug = models.SlugField(unique=True)
+    descricao = models.TextField()
+    modulo = models.ForeignKey('Modulo', on_delete=models.PROTECT)
+    plat_id = models.CharField(max_length=32)
+
+    def __str__(self):
+        return self.titulo
+
+    def get_absolute_url(self):
+        pass

@@ -10,8 +10,29 @@ def modulos(db):
     :param db:
     :return: lista de módulos não ordenados.
     """
-    modulos = [baker.make('Modulo', order=ord) for ord in [2, 0, 3, 1]]
+    modulos = [baker.make('Modulo', order=v) for v in [2, 0, 3, 1]]
     return modulos
+
+
+@pytest.fixture
+def modulo(db):
+    """
+    Cria um módulo.
+    :param db:
+    :return: módulo criado.
+    """
+    return baker.make('Modulo')
+
+
+@pytest.fixture
+def aulas(modulo):
+    """
+    Cria aulas de forma desordenada para que sejam ordenadas e comparadas com o resultado da função que busca e ordena.
+    :param modulo: Módulo para o qual as aulas serão criadas.
+    :return: Lista de aulas desordenada.
+    """
+    aulas = [baker.make('Aula', modulo=modulo, order=v) for v in [2, 1, 3]]
+    return aulas
 
 
 def test_facade_listar_modulos_ordenados(modulos):
@@ -24,3 +45,9 @@ def test_facade_listar_modulos_ordenados(modulos):
     modulos.sort(key=lambda mod: mod.order)
     mod_ord = list(facade.listar_modulos_ordenados())
     assert mod_ord == modulos
+
+
+def test_facade_buscar_aulas_ordenadas(modulo, aulas):
+    aulas.sort(key=lambda aula: aula.order)
+    aulas_ord = list(facade.listar_aulas_de_modulo_ordenadas(modulo))
+    assert aulas == aulas_ord

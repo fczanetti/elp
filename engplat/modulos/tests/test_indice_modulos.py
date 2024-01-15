@@ -40,4 +40,4 @@ def test_descricao_modulos(resp, modulos):
 
 def test_link_modulos(resp, modulos):
     for modulo in modulos:
-        assert_contains(resp, reverse('modulos:detalhe', args=(modulo.slug,)))
+        assert_contains(resp, reverse('modulos:detalhe_modulo', args=(modulo.slug,)))

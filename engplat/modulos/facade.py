@@ -8,3 +8,23 @@ def listar_modulos_ordenados():
     """
     modulos = Modulo.objects.order_by('order').all()
     return modulos
+
+
+def buscar_modulo(slug):
+    """
+    Busca o módulo no banco de dados através da slug.
+    :param slug: Parâmetro para localizar o módulo.
+    :return: Objeto Modulo.
+    """
+    modulo = Modulo.objects.get(slug=slug)
+    return modulo
+
+
+def listar_aulas_de_modulo_ordenadas(modulo):
+    """
+    Lista as aulas de um módulo específico.
+    :param modulo: Módulo do qual as aulas serão listadas.
+    :return: Lista de aulas do módulo informado como parâmetro.
+    """
+    aulas = modulo.aula_set.order_by('order').all()
+    return aulas

@@ -148,7 +148,7 @@
     bottom: 0;
 }
 
-#itemlistamodulos {
+.listamodulo {
     background-color: #F1F2F6;
     list-style: none;
     width: 45%;
@@ -157,7 +157,7 @@
 
 #itemlistamodulos > a {
     text-decoration: none;
-    color: #3E627A;
+    color: black;
 }
 
 @media screen and (max-width: 1000px) {
