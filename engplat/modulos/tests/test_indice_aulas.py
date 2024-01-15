@@ -41,4 +41,5 @@ def test_titulo_aulas_modulo(resp, modulo):
 
 def test_link_aulas_modulo(resp, modulo):
     for aula in modulo.aula_set.all():
-        assert_contains(resp, aula.get_absolute_url())
+        assert_contains(resp, reverse('modulos:detalhe_aula', kwargs={'modulo_slug': modulo.slug,
+                                                                      'slug': aula.slug}))

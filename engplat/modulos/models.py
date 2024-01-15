@@ -28,4 +28,4 @@ class Aula(OrderedModel):
         return self.titulo
 
     def get_absolute_url(self):
-        return reverse('modulos:detalhe_aula', args=(self.slug,))
+        return reverse('modulos:detalhe_aula', kwargs={'slug': self.slug, 'modulo_slug': self.modulo.slug})
