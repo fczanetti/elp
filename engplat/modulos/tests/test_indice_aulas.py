@@ -34,6 +34,11 @@ def test_publico_modulo(resp, modulo):
     assert_contains(resp, modulo.publico)
 
 
-def test_aulas_modulo(resp, modulo):
+def test_titulo_aulas_modulo(resp, modulo):
     for aula in modulo.aula_set.all():
         assert_contains(resp, aula.titulo)
+
+
+def test_link_aulas_modulo(resp, modulo):
+    for aula in modulo.aula_set.all():
+        assert_contains(resp, aula.get_absolute_url())
