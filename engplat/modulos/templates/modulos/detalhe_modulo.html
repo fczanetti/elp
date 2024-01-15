@@ -9,11 +9,11 @@
         <p>{{ modulo.descricao }}</p>
         <p><b>Público: </b>{{ modulo.publico }}</p>
     </div>
-    <ol class="ps-3 rounded" id="indexlist">
+    <ol class="ps-3 rounded mt-3 indexlist">
         {% for aula in aulas %}
         <li class="pt-1 pb-1 fw-medium">
             <a class="text-decoration-none lh-lg fw-medium"
-               href="{{ podcast.get_absolute_url }}">{{ aula.titulo }}</a>
+               href="{{ aula.get_absolute_url }}">{{ aula.titulo }}</a>
         </li>
         {% empty %}
             <li>Não há aulas para mostrar.</li>

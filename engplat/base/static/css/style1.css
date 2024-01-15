@@ -132,14 +132,14 @@
     font-style: normal;
 }
 
-#indexlist {
+.indexlist {
     background-color: #F1F2F6;
     width: 45%;
     list-style-position: inside;
 }
 
-#indexlist > li > a {
-    color: #3E627A;
+.indexlist > li > a {
+    color: black;
 }
 
 #footer {
@@ -155,7 +155,7 @@
     padding: 1rem 1rem 0.1rem 1rem;
 }
 
-#itemlistamodulos > a {
+.listamodulo > a {
     text-decoration: none;
     color: black;
 }
@@ -218,11 +218,11 @@
         align-self: center;
     }
 
-    #indexlist {
+    .indexlist {
         width: 100%;
     }
 
-    #itemlistamodulos {
+    .listamodulo {
         width: 100%;
     }
 }

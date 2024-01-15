@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from engplat.modulos import facade
+from engplat.modulos.models import Aula
 
 
 def indice_modulos(request):
@@ -11,3 +12,8 @@ def detalhe_modulo(request, slug):
     modulo = facade.buscar_modulo(slug)
     aulas = facade.listar_aulas_de_modulo_ordenadas(modulo)
     return render(request, 'modulos/detalhe_modulo.html', {'modulo': modulo, 'aulas': aulas})
+
+
+def detalhe_aula(request, slug):
+    aula = Aula.objects.get(slug=slug)
+    return render(request, 'modulos/detalhe_aula.html', {'aula': aula})
