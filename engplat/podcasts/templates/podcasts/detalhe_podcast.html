@@ -14,7 +14,7 @@
 <h2 id="titulovideo">{{ podcast.titulo }}</h2>
 <div class="mt-3 p-1 rounded-3 bg-secondary-subtle" id="descricaovideo">
     <h5>Descrição</h5>
-    <p class="mb-0 mt-3">{{ podcast.descricao }}</p>
+    <p class="mb-0 mt-3">{{ podcast.descricao|linebreaks }}</p>
 </div>
 <script src="https://player.vimeo.com/api/player.js"></script>
 {% endblock %}
