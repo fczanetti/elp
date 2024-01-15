@@ -14,6 +14,6 @@ def detalhe_modulo(request, slug):
     return render(request, 'modulos/detalhe_modulo.html', {'modulo': modulo, 'aulas': aulas})
 
 
-def detalhe_aula(request, slug):
+def detalhe_aula(request, slug, modulo_slug):
     aula = Aula.objects.get(slug=slug)
     return render(request, 'modulos/detalhe_aula.html', {'aula': aula})
