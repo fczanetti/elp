@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}<title>Módulos - {{ modulo.titulo }}</title>{% endblock %}
+
+{% block maincontent %}
+    <h1 class="pb-3">{{ modulo.titulo }}</h1>
+    <div class="listamodulo rounded">
+        <p>{{ modulo.descricao }}</p>
+        <p><b>Público: </b>{{ modulo.publico }}</p>
+    </div>
+    <ol class="ps-3 rounded" id="indexlist">
+        {% for aula in aulas %}
+        <li class="pt-1 pb-1 fw-medium">
+            <a class="text-decoration-none lh-lg fw-medium"
+               href="{{ podcast.get_absolute_url }}">{{ aula.titulo }}</a>
+        </li>
+        {% empty %}
+            <li>Não há aulas para mostrar.</li>
+        {% endfor %}
+    </ol>
+{% endblock %}
