@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'engplat.podcasts',
     'engplat.modulos',
     'ordered_model',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
