@@ -1,13 +1,10 @@
-import pytest
-from model_bakery import baker
-
 from engplat.podcasts import facade
 
 
-@pytest.fixture
-def podcasts(db):
-    return [baker.make('Podcast', data_gravacao=d) for d in ['2024-01-10', '2024-01-12']]
-
-
-def test_listar_podcasts_ordenados(podcasts):
-    assert list(sorted(podcasts, key=lambda pod: pod.data_gravacao, reverse=True)) == facade.buscar_podcasts_ordenados()
+def test_listar_podcasts_ordenados(podcasts_datas_especificas):
+    """
+    Certifica de que a função definida no módulo facade.py está ordenando corretamente os módulos ao buscar no banco
+    de dados.
+    """
+    assert (list(sorted(podcasts_datas_especificas, key=lambda pod: pod.data_gravacao, reverse=True)) ==
+            facade.buscar_podcasts_ordenados())
