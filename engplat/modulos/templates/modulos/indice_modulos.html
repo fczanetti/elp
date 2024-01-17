@@ -11,14 +11,14 @@
             <a href="{{ modulo.get_absolute_url }}">
                 <div>
                     <h4>{{ modulo.titulo }}</h4>
-                    <p>{{ modulo.descricao }}</p>
+                    <p>{{ modulo.descricao|linebreaks }}</p>
                     <p><b>Público: </b>{{ modulo.publico }}</p>
                 </div>
             </a>
         </li>
         <br>
         {% empty %}
-            <li>Não há módulos para mostrar.</li>
+            <li>Não há módulos cadastrados.</li>
         {% endfor %}
     </ul>
 {% endblock %}
