@@ -1,41 +1,37 @@
-import pytest
-from django.urls import reverse
-from model_bakery import baker
 from engplat.django_assertions import assert_contains
-from engplat.podcasts.models import Podcast
 
 
-@pytest.fixture
-def podcast(db):
-    pod = baker.make(Podcast)
-    return pod
+def test_podcast_inexistente(resp_podcast_inexistente):
+    """
+    Certifica de que o erro 404 é apresentado ao tentar acessar uma página cujo podcast não está cadastrado no banco
+    (preenchendo a URL manualmente).
+    """
+    assert resp_podcast_inexistente.status_code == 404
 
 
-@pytest.fixture
-def resp(client, podcast):
-    return client.get(reverse('podcasts:detalhe', args=(podcast.slug,)))
+def test_status_code_detalhe_podcast(resp_detalhe_podcast):
+    """
+    Certifica de que a requisição é bem sucedida e a resposta retorna com status code = 200.
+    """
+    assert resp_detalhe_podcast.status_code == 200
 
 
-@pytest.fixture
-def resp_video_inexistente(client, podcast):
-    return client.get(reverse('podcasts:detalhe', args=(podcast.slug+'video_nao_existente',)))
+def test_titulo_podcast(resp_detalhe_podcast, podcast_detalhe):
+    """
+    Certifica de que o título do podcast está presente em sua página de detalhes.
+    """
+    assert_contains(resp_detalhe_podcast, f'{podcast_detalhe.titulo}')
 
 
-def test_video_inexistente(resp_video_inexistente):
-    assert resp_video_inexistente.status_code == 404
+def test_url_podcast_detalhe(resp_detalhe_podcast, podcast_detalhe):
+    """
+    Certifica de que a URL que liga o podcast com a plataforma do Youtube está presente na página de detalhe do podcast.
+    """
+    assert_contains(resp_detalhe_podcast, f'https://www.youtube.com/embed/{podcast_detalhe.plat_id}')
 
 
-def test_status_code_detalhe_podcast(resp):
-    assert resp.status_code == 200
-
-
-def test_titulo_podcast(resp, podcast):
-    assert_contains(resp, f'{podcast.titulo}')
-
-
-def test_video_url_podcast_detalhe(resp, podcast):
-    assert_contains(resp, f'https://www.youtube.com/embed/{podcast.plat_id}')
-
-
-def test_descricao_podcast(resp, podcast):
-    assert_contains(resp, f'{podcast.descricao}')
+def test_descricao_podcast(resp_detalhe_podcast, podcast_detalhe):
+    """
+    Certifica de que a descrição do podcast está presente em sua página de detalhes.
+    """
+    assert_contains(resp_detalhe_podcast, f'{podcast_detalhe.descricao}')
