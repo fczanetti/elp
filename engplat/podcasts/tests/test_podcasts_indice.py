@@ -32,3 +32,18 @@ def test_links_detalhe_podcasts(resp_indice_podcasts, podcasts_indice):
     """
     for podcast in podcasts_indice:
         assert_contains(resp_indice_podcasts, f'href="{reverse("podcasts:detalhe", args=(podcast.slug,))}"')
+
+
+def test_tiulo_pagina_podcasts_breadcrumb(resp_indice_podcasts):
+    """
+    Certifica de que o titulo da pagina de podcasts está presente no breadcrumb.
+    """
+    assert_contains(resp_indice_podcasts, '<li class="breadcrumb-item active" aria-current="page">Podcasts</li>')
+
+
+def test_link_home_breadcrumb(resp_indice_podcasts):
+    """
+    Certifica de que o link para a home page está presente no breadcrumb.
+    """
+    assert_contains(resp_indice_podcasts, f'<li class="breadcrumb-item"><a class="text-decoration-none" '
+                                          f'href="{reverse("base:home")}">Home</a></li>')

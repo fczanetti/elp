@@ -41,7 +41,7 @@
 
 #intro {
     display: flex;
-    margin-bottom: 30px;
+    margin: 1rem 0 2rem 0;
     box-shadow: 2px 2px 20px lightgray;
     border-radius: 15px;
     background-color: #F1F2F6;

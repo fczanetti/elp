@@ -3,6 +3,15 @@
 
 {% block title %}<title>Módulos - Índice</title>{% endblock %}
 
+{% block breadcrumb %}
+    <nav aria-label="breadcrumb" class="bg-secondary-subtle mb-3 p-3">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a class="text-decoration-none" href="{% url 'base:home' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Modulos</li>
+        </ol>
+    </nav>
+{% endblock breadcrumb %}
+
 {% block maincontent %}
     <h1 class="pb-3">Módulos</h1>
     <ul class="p-0">

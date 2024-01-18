@@ -3,6 +3,16 @@
 
 {% block title %}<title>Podcasts - {{ podcast.titulo }}</title>{% endblock %}
 
+{% block breadcrumb %}
+    <nav aria-label="breadcrumb" class="bg-secondary-subtle mb-3 p-3">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a class="text-decoration-none" href="{% url 'base:home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a class="text-decoration-none" href="{% url 'podcasts:indice' %}">Podcasts</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ podcast.titulo }}</li>
+        </ol>
+    </nav>
+{% endblock breadcrumb %}
+
 {% block maincontent %}
 <div id="videodiv">
     <iframe id="videoframe" src="https://www.youtube.com/embed/{{ podcast.plat_id }}"
