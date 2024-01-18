@@ -15,5 +15,5 @@ def detalhe_modulo(request, slug):
 
 
 def detalhe_aula(request, slug, modulo_slug):
-    aula = Aula.objects.get(slug=slug)
+    aula = Aula.objects.select_related('modulo').get(slug=slug)
     return render(request, 'modulos/detalhe_aula.html', {'aula': aula})
