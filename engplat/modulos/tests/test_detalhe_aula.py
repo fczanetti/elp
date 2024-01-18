@@ -1,4 +1,5 @@
 from engplat.django_assertions import assert_contains
+from django.urls import reverse
 
 
 def test_status_code_detalhe_aula(resp_detalhe_aula):
@@ -30,3 +31,34 @@ def test_id_plataforma_aula(resp_detalhe_aula, aula):
     da aula.
     """
     assert_contains(resp_detalhe_aula, aula.plat_id)
+
+
+def test_titulo_aula_breadcrumb(resp_detalhe_aula, aula):
+    """
+    Certifica de que o título da aula está presente no breadcrumb.
+    """
+    assert_contains(resp_detalhe_aula, f'<li class="breadcrumb-item active" aria-current="page">{aula.titulo}</li>')
+
+
+def test_titulo_modulo_breadcrumb(resp_detalhe_aula, aula):
+    """
+    Certifica de que o título do modulo está presente no breadcrumb.
+    """
+    assert_contains(resp_detalhe_aula, f'<li class="breadcrumb-item"><a class="text-decoration-none" '
+                                       f'href="{aula.modulo.get_absolute_url()}">{aula.modulo.titulo}</a></li>')
+
+
+def test_indice_modulos_breadcrumb(resp_detalhe_aula, aula):
+    """
+    Certifica de que o índice dos modulos está presente no breadcrumb.
+    """
+    assert_contains(resp_detalhe_aula, f'<li class="breadcrumb-item"><a class="text-decoration-none" '
+                                       f'href="{reverse("modulos:indice_modulos")}">Módulos</a></li>')
+
+
+def test_link_home_breadcrumb(resp_detalhe_aula, aula):
+    """
+    Certifica de que o link para a home page está presente no breadcrumb.
+    """
+    assert_contains(resp_detalhe_aula, f'<li class="breadcrumb-item"><a '
+                                       f'class="text-decoration-none" href="{reverse("base:home")}">Home</a></li>')

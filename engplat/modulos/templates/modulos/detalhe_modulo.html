@@ -3,6 +3,16 @@
 
 {% block title %}<title>Módulos - {{ modulo.titulo }}</title>{% endblock %}
 
+{% block breadcrumb %}
+    <nav aria-label="breadcrumb" class="bg-secondary-subtle mb-3 p-3">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a class="text-decoration-none" href="{% url 'base:home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a class="text-decoration-none" href="{% url 'modulos:indice_modulos' %}">Módulos</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ modulo.titulo }}</li>
+        </ol>
+    </nav>
+{% endblock breadcrumb %}
+
 {% block maincontent %}
     <h1 class="pb-3">{{ modulo.titulo }}</h1>
     <div class="listamodulo rounded">

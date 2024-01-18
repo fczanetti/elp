@@ -47,3 +47,18 @@ def test_link_modulos(resp_indice_modulos, modulos_desordenados):
     """
     for modulo in modulos_desordenados:
         assert_contains(resp_indice_modulos, reverse('modulos:detalhe_modulo', args=(modulo.slug,)))
+
+
+def test_titulo_modulo_breadcrumb(resp_indice_modulos):
+    """
+    Certifica de que o título da página de módulos está presente no breadcrumb.
+    """
+    assert_contains(resp_indice_modulos, '<li class="breadcrumb-item active" aria-current="page">Modulos</li>')
+
+
+def test_link_home_breadcrumb(resp_indice_modulos):
+    """
+    Certifica de que o link da home page está presente no breadcrumb.
+    """
+    assert_contains(resp_indice_modulos, f'<li class="breadcrumb-item"><a class="text-decoration-none" '
+                                         f'href="{reverse("base:home")}">Home</a></li>')

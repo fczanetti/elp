@@ -55,3 +55,26 @@ def test_modulo_sem_aulas(resp_detalhe_modulo_sem_aulas, modulo_sem_aulas):
     :param resp_modulo_sem_aulas: Resposta da requisição para a página de um módulo sem aulas vinculadas.
     """
     assert_contains(resp_detalhe_modulo_sem_aulas, '<li>Não há aulas cadastradas.</li>')
+
+
+def test_titulo_modulo_breadcrumb(resp_detalhe_modulo, modulo):
+    """
+    Certifica de que o título do módulo está presente no breadcrumb.
+    """
+    assert_contains(resp_detalhe_modulo, f'<li class="breadcrumb-item active" aria-current="page">{modulo.titulo}</li>')
+
+
+def test_indice_modulos_breadcrumb(resp_detalhe_modulo, modulo):
+    """
+    Certifica de que o índice dos módulos está presente no breadcrumb.
+    """
+    assert_contains(resp_detalhe_modulo, f'<li class="breadcrumb-item"><a class="text-decoration-none" '
+                                         f'href="{reverse("modulos:indice_modulos")}">Módulos</a></li>')
+
+
+def test_link_home_breadcrumb(resp_detalhe_modulo, modulo):
+    """
+    Certifica de que o link para a home page está presente no breadcrumb.
+    """
+    assert_contains(resp_detalhe_modulo, f'<li class="breadcrumb-item"><a '
+                                         f'class="text-decoration-none" href="{reverse("base:home")}">Home</a></li>')
