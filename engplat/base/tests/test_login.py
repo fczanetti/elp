@@ -1,56 +1,23 @@
-import pytest
 from django.urls import reverse
-from model_bakery import baker
-from django.contrib.auth import get_user_model
+from engplat.django_assertions import assert_contains
 
 
-@pytest.fixture
-def usuario(db):
-    """
-    Cria um usuário e define uma senha acessível para este.
-    :return: Usuário de modelo com password = 'senha'.
-    """
-    user = baker.make(get_user_model())
-    senha = 'senha'
-    user.set_password(senha)
-    user.save()
-    user.senha_plana = senha
-    return user
-
-
-@pytest.fixture
-def resp_login_redirect(usuario, client):
-    """
-    Realiza login com os dados do usuário criado.
-    :return: Resposta da requisição POST para realização do login.
-    """
-    return client.post(reverse('base:login'), {'username': usuario.get_username(),
-                                               'password': usuario.senha_plana})
-
-
-@pytest.fixture
-def resp(client):
-    """
-    Gera uma requisição na página de login do usuário.
-    :return: Resposta da requisição gerada.
-    """
-    return client.get(reverse('base:login'))
-
-
-@pytest.fixture
-def resp_reset_password(client):
-    """
-    Gera uma requisição na página de reset de password.
-    :return: Resposta da requisição gerada.
-    """
-    return client.get(reverse('base:password_reset'))
-
-
-def test_status_code(resp):
+def test_status_code_pagina_login(resp_login_page):
     """
     Checa se a requisição foi retornada com sucesso.
     """
-    assert resp.status_code == 200
+    assert resp_login_page.status_code == 200
+
+
+def test_campos_formulario_pagina_login(resp_login_page):
+    """
+    Certifica de que os campos do formulário de login estão presentes na página.
+    """
+    assert_contains(resp_login_page, '<label for="id_username">Endereço de email:</label>')
+    assert_contains(resp_login_page, '<input type="text" name="username"')
+    assert_contains(resp_login_page, '<label for="id_password">Senha:</label>')
+    assert_contains(resp_login_page, '<input type="password" name="password"')
+    assert_contains(resp_login_page, '<input type="submit" value="login">')
 
 
 def test_login_redirect(resp_login_redirect):
@@ -61,8 +28,8 @@ def test_login_redirect(resp_login_redirect):
     assert resp_login_redirect.url == reverse('base:home')
 
 
-def test_forgotten_password_status_code(resp_reset_password):
+def test_link_pagina_reset_password(resp_login_page):
     """
-    Certifica de que a página de reset de password foi carregada com sucesso.
+    Certifica de que o link da página de recuperação de senha está disponível na página de login.
     """
-    assert resp_reset_password.status_code == 200
+    assert_contains(resp_login_page, f'<a href="{reverse("base:password_reset")}">Esqueceu sua senha?</a>')
