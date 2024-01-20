@@ -3,6 +3,7 @@
 {% block title %}<title>English Platform - Login</title>{% endblock %}
 
 {% block maincontent %}
+    <h2>Login</h2>
     {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
@@ -16,7 +17,7 @@
         {% endif %}
     {% endif %}
 
-    <form method="post" action="{% url 'base:user_login' %}">
+    <form method="post" action="{% url 'base:login' %}">
         {% csrf_token %}
         <table>
             <tr>
@@ -34,5 +35,5 @@
     </form>
 
     {# Assumes you set up the password_reset view in your URLconf #}
-
+    <p><a href="{% url 'base:password_reset' %}">Esqueceu sua senha?</a></p>
 {% endblock %}

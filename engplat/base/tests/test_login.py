@@ -24,8 +24,8 @@ def resp_login_redirect(usuario, client):
     Realiza login com os dados do usuário criado.
     :return: Resposta da requisição POST para realização do login.
     """
-    return client.post(reverse('base:user_login'), {'username': usuario.get_username(),
-                                                    'password': usuario.senha_plana})
+    return client.post(reverse('base:login'), {'username': usuario.get_username(),
+                                               'password': usuario.senha_plana})
 
 
 @pytest.fixture
@@ -34,7 +34,16 @@ def resp(client):
     Gera uma requisição na página de login do usuário.
     :return: Resposta da requisição gerada.
     """
-    return client.get(reverse('base:user_login'))
+    return client.get(reverse('base:login'))
+
+
+@pytest.fixture
+def resp_reset_password(client):
+    """
+    Gera uma requisição na página de reset de password.
+    :return: Resposta da requisição gerada.
+    """
+    return client.get(reverse('base:password_reset'))
 
 
 def test_status_code(resp):
@@ -50,3 +59,10 @@ def test_login_redirect(resp_login_redirect):
     """
     assert resp_login_redirect.status_code == 302
     assert resp_login_redirect.url == reverse('base:home')
+
+
+def test_forgotten_password_status_code(resp_reset_password):
+    """
+    Certifica de que a página de reset de password foi carregada com sucesso.
+    """
+    assert resp_reset_password.status_code == 200
