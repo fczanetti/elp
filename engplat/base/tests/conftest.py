@@ -65,3 +65,14 @@ def resp_password_change_redirect(usuario_senha_plana, resp_login_redirect, clie
     return client.post(reverse('base:password_change'), {'old_password': usuario_senha_plana.senha_plana,
                                                          'new_password1': novasenha,
                                                          'new_password2': novasenha})
+
+
+@pytest.fixture
+def client_usuario_logado(usuario_senha_plana, client):
+    client.force_login(usuario_senha_plana)
+    return client
+
+
+@pytest.fixture
+def resp_usuario_logado(client_usuario_logado):
+    return client_usuario_logado.get(reverse('base:home'))

@@ -21,6 +21,14 @@
             <a class="navbar-brand text-light ms-4 pb-0" href="{% url 'modulos:indice_modulos' %}">Módulos</a>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             </div>
+            {% if user.is_authenticated %}
+                <form action="{% url 'base:logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-danger me-2" type="submit">Logout</button>
+                </form>
+            {% else %}
+                <a href="{% url 'base:login' %}" type="button" class="btn btn-light me-2">Login</a>
+            {% endif %}
         </nav>
 
         {% block breadcrumb %}
