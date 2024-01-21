@@ -14,20 +14,20 @@
         {% endblock %}
     </head>
     <body id="body">
-        <nav class="navbar navbar-expand-lg navbar-light border-bottom p-1 mb-0" id="navbar">
-            <a class="navbar-brand text-light" href="{% url 'base:home' %}">
-                <i class="bi bi-globe-americas icon"></i><span class="fs-3">English</span>
-            </a>
-            <a class="navbar-brand text-light ms-4 pb-0" href="{% url 'modulos:indice_modulos' %}">Módulos</a>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <nav class="navbar navbar-expand-lg navbar-light border-bottom p-1 mb-0 align-items-start" id="navbar">
+            <div id="leftsidenavbar">
+                <a class="navbar-brand text-light" href="{% url 'base:home' %}">
+                    <i class="bi bi-globe-americas icon"></i><span class="fs-3">English</span>
+                </a>
+                <a class="navbar-brand text-light ms-4 pb-0" href="{% url 'modulos:indice_modulos' %}">Módulos</a>
             </div>
             {% if user.is_authenticated %}
                 <form action="{% url 'base:logout' %}" method="POST">
                     {% csrf_token %}
-                    <button class="btn btn-danger me-2" type="submit">Logout</button>
+                    <button class="btn btn-danger m-2" type="submit">Logout</button>
                 </form>
             {% else %}
-                <a href="{% url 'base:login' %}" type="button" class="btn btn-light me-2">Login</a>
+                <a href="{% url 'base:login' %}" type="button" class="btn btn-light m-2">Login</a>
             {% endif %}
         </nav>
 

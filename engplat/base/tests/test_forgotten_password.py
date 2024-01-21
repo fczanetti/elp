@@ -14,4 +14,4 @@ def test_campos_formulario_recuperacao_senha(resp_reset_password_page):
     """
     assert_contains(resp_reset_password_page, '<label for="id_email">Endereço de email:</label>')
     assert_contains(resp_reset_password_page, '<input type="email" name="email"')
-    assert_contains(resp_reset_password_page, '<input type="submit" value="Reinicializar minha senha">')
+    assert_contains(resp_reset_password_page, '<input type="submit" value="Reinicializar minha senha"')
