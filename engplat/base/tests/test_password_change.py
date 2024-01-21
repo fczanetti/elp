@@ -19,7 +19,8 @@ def test_campos_formulario_alteracao_senha(resp_password_change_page):
     assert_contains(resp_password_change_page, '<input type="password" name="new_password1"')
     assert_contains(resp_password_change_page, '<label for="id_new_password2">Confirmação da nova senha:</label>')
     assert_contains(resp_password_change_page, '<input type="password" name="new_password2"')
-    assert_contains(resp_password_change_page, '<input type="submit" value="Alterar minha senha" class="default">')
+    assert_contains(resp_password_change_page, '<input type="submit" value="Alterar minha senha" '
+                                               'class="default formbutton align-self-end">')
 
 
 def test_redirect_after_password_changed_successfuly(resp_password_change_redirect):

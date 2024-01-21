@@ -17,7 +17,7 @@ def test_campos_formulario_pagina_login(resp_login_page):
     assert_contains(resp_login_page, '<input type="text" name="username"')
     assert_contains(resp_login_page, '<label for="id_password">Senha:</label>')
     assert_contains(resp_login_page, '<input type="password" name="password"')
-    assert_contains(resp_login_page, '<input type="submit" value="login">')
+    assert_contains(resp_login_page, '<input type="submit" value="Login" class="align-self-end formbutton">')
 
 
 def test_login_redirect(resp_login_redirect):
@@ -32,7 +32,8 @@ def test_link_pagina_reset_password(resp_login_page):
     """
     Certifica de que o link da página de recuperação de senha está disponível na página de login.
     """
-    assert_contains(resp_login_page, f'<a href="{reverse("base:password_reset")}">Esqueceu sua senha?</a>')
+    assert_contains(resp_login_page, f'<p><a href="{reverse("base:password_reset")}" '
+                                     f'class="btn lh-sm bg-body-secondary border">Esqueceu sua senha?</a></p>')
 
 
 def test_botao_login(resp_login_page):
@@ -40,12 +41,12 @@ def test_botao_login(resp_login_page):
     Certifica de que, caso o usuário não esteja logado, existe um botão para login na página.
     """
     assert_contains(resp_login_page, f'<a href="{reverse("base:login")}" type="button" '
-                                     f'class="btn btn-light me-2">Login</a>')
+                                     f'class="btn btn-light m-2">Login</a>')
 
 
 def test_botao_logout(resp_usuario_logado):
     """
     Certifica de que, com o usuário logado, o botão de logout aparece na página.
     """
-    assert_contains(resp_usuario_logado, '<button class="btn btn-danger me-2" type="submit">Logout</button>')
+    assert_contains(resp_usuario_logado, '<button class="btn btn-danger m-2" type="submit">Logout</button>')
     assert_contains(resp_usuario_logado, f'{reverse("base:logout")}')
