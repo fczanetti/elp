@@ -62,3 +62,12 @@ def test_link_home_breadcrumb(resp_indice_modulos):
     """
     assert_contains(resp_indice_modulos, f'<li class="breadcrumb-item"><a class="text-decoration-none" '
                                          f'href="{reverse("base:home")}">Home</a></li>')
+
+
+def test_acesso_indice_usuario_nao_logado(resp_indice_modulos_usuario_nao_logado):
+    """
+    Certifica de que, caso o usuário não esteja logado, ao tentar acessar a página de índice de módulos ele será
+    redirecionado (status_code = 302) para a página de login.
+    """
+    assert resp_indice_modulos_usuario_nao_logado.status_code == 302
+    assert resp_indice_modulos_usuario_nao_logado.url.startswith(reverse('base:login'))

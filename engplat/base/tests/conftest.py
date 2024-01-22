@@ -1,21 +1,5 @@
 import pytest
-from model_bakery import baker
-from django.contrib.auth import get_user_model
 from django.urls import reverse
-
-
-@pytest.fixture
-def usuario_senha_plana(db):
-    """
-    Cria um usuário e define uma senha acessível para este.
-    :return: Usuário de modelo com password = 'senha'.
-    """
-    user = baker.make(get_user_model())
-    senha = 'senha'
-    user.set_password(senha)
-    user.save()
-    user.senha_plana = senha
-    return user
 
 
 @pytest.fixture
@@ -25,6 +9,15 @@ def resp_login_page(client):
     :return: Resposta da requisição gerada.
     """
     return client.get(reverse('base:login'))
+
+
+@pytest.fixture
+def resp_usuario_logado(client_usuario_logado):
+    """
+    Realiza uma requisição na home page com o usuário logado na plataforma.
+    :return: Resposta da requisição gerada.
+    """
+    return client_usuario_logado.get(reverse('base:home'))
 
 
 @pytest.fixture
@@ -65,17 +58,6 @@ def resp_password_change_redirect(usuario_senha_plana, resp_login_redirect, clie
     return client.post(reverse('base:password_change'), {'old_password': usuario_senha_plana.senha_plana,
                                                          'new_password1': novasenha,
                                                          'new_password2': novasenha})
-
-
-@pytest.fixture
-def client_usuario_logado(usuario_senha_plana, client):
-    client.force_login(usuario_senha_plana)
-    return client
-
-
-@pytest.fixture
-def resp_usuario_logado(client_usuario_logado):
-    return client_usuario_logado.get(reverse('base:home'))
 
 
 @pytest.fixture
