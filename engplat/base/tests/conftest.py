@@ -76,3 +76,11 @@ def client_usuario_logado(usuario_senha_plana, client):
 @pytest.fixture
 def resp_usuario_logado(client_usuario_logado):
     return client_usuario_logado.get(reverse('base:home'))
+
+
+@pytest.fixture
+def resp_reset_password(client, usuario_senha_plana):
+    """
+    Realiza uma requisição post na página de reset de password.
+    """
+    return client.post(reverse('base:password_reset'), {'email': usuario_senha_plana.get_username()})

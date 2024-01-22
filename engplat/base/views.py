@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.contrib.auth.views import LoginView, PasswordResetView, PasswordChangeView, LogoutView
+from django.contrib.auth.views import LoginView, PasswordResetView, PasswordChangeView, LogoutView, \
+    PasswordResetDoneView, PasswordResetConfirmView
 
 
 def home(request):
@@ -13,6 +14,7 @@ class UserLoginView(LoginView):
 
 class CustomPasswordResetView(PasswordResetView):
     template_name = 'registration/password_reset.html'
+    success_url = '/accounts/password_reset_confirmed'
 
 
 class CustomPasswordChangeView(PasswordChangeView):
@@ -26,3 +28,11 @@ class UserLogoutView(LogoutView):
 
 def password_alterado(request):
     return render(request, 'registration/password_alterado.html')
+
+
+class CustomPasswordResetDoneView(PasswordResetDoneView):
+    template_name = 'registration/password_reset_done_custom.html'
+
+
+class CustomPasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = 'registration/password_reset_confirm_custom.html'
