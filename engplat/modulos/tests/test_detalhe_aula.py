@@ -62,3 +62,12 @@ def test_link_home_breadcrumb(resp_detalhe_aula, aula):
     """
     assert_contains(resp_detalhe_aula, f'<li class="breadcrumb-item"><a '
                                        f'class="text-decoration-none" href="{reverse("base:home")}">Home</a></li>')
+
+
+def test_detalhe_aula_sem_usuario_logado(resp_detalhe_aula_sem_usuario_logado):
+    """
+    Certifica de que, ao tentar acessar a página de detalhes da aula SEM ESTAR LOGADO o usuário é redirecionado para
+    a página de login.
+    """
+    assert resp_detalhe_aula_sem_usuario_logado.status_code == 302
+    assert resp_detalhe_aula_sem_usuario_logado.url.startswith(reverse('base:login'))

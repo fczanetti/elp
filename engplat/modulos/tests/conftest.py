@@ -52,18 +52,37 @@ def aulas(modulo):
 
 
 @pytest.fixture
-def resp_indice_modulos(client, modulos_desordenados):
+def resp_indice_modulos(client_usuario_logado, modulos_desordenados):
     """
-    Cria uma requisição na página de índice de módulos onde devem constar os 3 módulos criados.
+    Cria uma requisição na página de índice de módulos com USUÁRIO LOGADO onde devem constar os 3 módulos criados.
+    :return: resposta da requisição feita.
+    """
+    return client_usuario_logado.get(reverse('modulos:indice_modulos'))
+
+
+@pytest.fixture
+def resp_indice_modulos_usuario_nao_logado(client, modulos_desordenados):
+    """
+    Cria uma requisição na página de índice de módulos com USUÁRIO NÃO LOGADO onde devem constar os 3 módulos criados.
     :return: resposta da requisição feita.
     """
     return client.get(reverse('modulos:indice_modulos'))
 
 
 @pytest.fixture
-def resp_detalhe_modulo(client, modulo, aulas):
+def resp_detalhe_modulo(client_usuario_logado, modulo, aulas):
     """
-    Gera uma requisição para a página de detalhes do módulo informado nos parâmetros.
+    Gera uma requisição com USUÁRIO LOGADO para a página de detalhes do módulo informado nos parâmetros.
+    :param modulo: Modulo usado para renderizar a página/gerar a requisição.
+    :return: Resposta da requisição gerada.
+    """
+    return client_usuario_logado.get(reverse('modulos:detalhe_modulo', args=(modulo.slug,)))
+
+
+@pytest.fixture
+def resp_detalhe_modulo_sem_usuario_logado(client, modulo):
+    """
+    Gera uma requisição com USUÁRIO NÃO LOGADO para a página de detalhes do módulo informado nos parâmetros.
     :param modulo: Modulo usado para renderizar a página/gerar a requisição.
     :return: Resposta da requisição gerada.
     """
@@ -71,20 +90,31 @@ def resp_detalhe_modulo(client, modulo, aulas):
 
 
 @pytest.fixture
-def resp_detalhe_modulo_sem_aulas(client, modulo_sem_aulas):
+def resp_detalhe_modulo_sem_aulas(client_usuario_logado, modulo_sem_aulas):
     """
-    Gera uma requisição para a página de detalhes do módulo criado sem aulas relacionadas.
+    Gera uma requisição COM USUÁRIO LOGADO para a página de detalhes do módulo criado sem aulas relacionadas.
     :param modulo_sem_aulas: Modulo usado para gerar a requisição/renderizar a página.
     :return: Resposta da requisição gerada.
     """
     # return client.get(reverse('modulos:detalhe_modulo', args=(modulo_sem_aulas.slug,)))
-    return client.get(modulo_sem_aulas.get_absolute_url())
+    return client_usuario_logado.get(modulo_sem_aulas.get_absolute_url())
 
 
 @pytest.fixture
-def resp_detalhe_aula(client, aula):
+def resp_detalhe_aula(client_usuario_logado, aula):
     """
-    Gera uma requisição para a página de detalhes da aula informada nos parâmetros.
+    Gera uma requisição COM USUÁRIO LOGADO para a página de detalhes da aula informada nos parâmetros.
+    :param aula: Aula usada para renderizar a página ao criar a requisição.
+    :return: Resposta da requisição gerada.
+    """
+    return client_usuario_logado.get(reverse('modulos:detalhe_aula', kwargs={'slug': aula.slug,
+                                                                             'modulo_slug': aula.modulo.slug}))
+
+
+@pytest.fixture
+def resp_detalhe_aula_sem_usuario_logado(client, aula):
+    """
+    Gera uma requisição com USUÁRIO NÃO LOGADO para a página de detalhes da aula informada nos parâmetros.
     :param aula: Aula usada para renderizar a página ao criar a requisição.
     :return: Resposta da requisição gerada.
     """
