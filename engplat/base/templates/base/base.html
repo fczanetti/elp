@@ -22,10 +22,13 @@
                 <a class="navbar-brand text-light ms-4 pb-0" href="{% url 'modulos:indice_modulos' %}">Módulos</a>
             </div>
             {% if user.is_authenticated %}
-                <form action="{% url 'base:logout' %}" method="POST">
-                    {% csrf_token %}
-                    <button class="btn btn-danger m-2" type="submit">Logout</button>
-                </form>
+                <div id="rightsidenavbar" class="d-flex align-items-center">
+                    <div class="pe-2 text-light">Hello, {{ user.first_name }}!</div>
+                    <form action="{% url 'base:logout' %}" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-danger m-2" type="submit">Logout</button>
+                    </form>
+                </div>
             {% else %}
                 <a href="{% url 'base:login' %}" type="button" class="btn btn-light m-2">Login</a>
             {% endif %}

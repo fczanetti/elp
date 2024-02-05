@@ -208,6 +208,11 @@
         flex-direction: column;
     }
 
+    #rightsidenavbar {
+        padding-top: 15px;
+        flex-direction: column;
+    }
+
     #intro {
         flex-direction: column;
     }

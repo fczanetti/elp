@@ -44,9 +44,10 @@ def test_botao_login(resp_login_page):
                                      f'class="btn btn-light m-2">Login</a>')
 
 
-def test_botao_logout(resp_usuario_logado):
+def test_botao_logout(resp_usuario_logado, usuario_senha_plana):
     """
     Certifica de que, com o usuário logado, o botão de logout aparece na página.
     """
     assert_contains(resp_usuario_logado, '<button class="btn btn-danger m-2" type="submit">Logout</button>')
     assert_contains(resp_usuario_logado, f'{reverse("base:logout")}')
+    assert_contains(resp_usuario_logado, f'{usuario_senha_plana.first_name}')
