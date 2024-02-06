@@ -1,7 +1,6 @@
 from django.urls import path
 from engplat.base import views
 
-
 app_name = 'base'
 urlpatterns = [
     path('', views.home, name='home'),
@@ -16,4 +15,6 @@ urlpatterns = [
          name='password_reset_confirm'),
     path('accounts/password_reset_finished', views.CustomPasswordResetCompleteView.as_view(),
          name='password_reset_finished'),
+    path('accounts/user_creation', views.user_creation, name='user_creation'),
+    path('accounts/user_created', views.user_created, name='user_created'),
 ]

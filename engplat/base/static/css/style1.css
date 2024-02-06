@@ -177,7 +177,7 @@
     margin: 15px 0;
 }
 
-.inputbox, #id_old_password, #id_new_password1, #id_new_password2, #id_email {
+.inputbox, #id_old_password, #id_new_password1, #id_new_password2 {
     width: 50%;
 }
 
