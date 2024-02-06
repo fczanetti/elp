@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.contrib.auth.views import LoginView, PasswordResetView, PasswordChangeView, LogoutView, \
     PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+
+from engplat.base.forms import MyUserCreationForm
 
 
 def home(request):
@@ -41,3 +44,20 @@ class CustomPasswordResetConfirmView(PasswordResetConfirmView):
 
 class CustomPasswordResetCompleteView(PasswordResetCompleteView):
     template_name = 'registration/password_reset_finish.html'
+
+
+def user_creation(request):
+    if request.method == 'POST':
+        form = MyUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('base:user_created'))
+        else:
+            return render(request, 'registration/user_creation.html', {'form': form})
+    else:
+        form = MyUserCreationForm()
+        return render(request, 'registration/user_creation.html', {'form': form})
+
+
+def user_created(request):
+    return render(request, 'registration/user_created.html')

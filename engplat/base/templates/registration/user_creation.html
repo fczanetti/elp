@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}<title>English Platform - New User</title>{% endblock %}
+
+{% block maincontent %}
+    <h2 class="formtitle">Novo usuário</h2>
+    <form action="{% url 'base:user_creation' %}" method="post" class="customform">
+        {% csrf_token %}
+        <div>
+        {% for field in form %}
+            <p class="errornote">{{ field.errors }}</p>
+            <div class="labelinputpair m-0">
+                <div>{{ field.label_tag }}</div>
+                <div class="inputbox">{{ field }}</div>
+            </div>
+            {{ field.help_text }}
+        {% endfor %}
+        </div>
+        <input type="submit" value="Criar usuário" class="default formbutton align-self-end mt-3">
+    </form>
+{% endblock maincontent %}
