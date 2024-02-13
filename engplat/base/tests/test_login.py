@@ -51,3 +51,10 @@ def test_botao_logout(resp_usuario_logado, usuario_senha_plana):
     assert_contains(resp_usuario_logado, '<button class="btn btn-danger m-2" type="submit">Logout</button>')
     assert_contains(resp_usuario_logado, f'{reverse("base:logout")}')
     assert_contains(resp_usuario_logado, f'{usuario_senha_plana.first_name}')
+
+
+def test_botao_criar_conta(resp_login_page):
+    """
+    Certifica de que existe um link para a criação de usuário na página de login.
+    """
+    assert_contains(resp_login_page, f'<a href="{reverse("base:user_creation")}">Crie uma.</a>')

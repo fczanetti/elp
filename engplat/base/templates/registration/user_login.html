@@ -35,4 +35,5 @@
 
     {# Assumes you set up the password_reset view in your URLconf #}
     <p><a href="{% url 'base:password_reset' %}" class="btn lh-sm bg-body-secondary border">Esqueceu sua senha?</a></p>
+    <p>Ainda não possui uma conta? <a href="{% url 'base:user_creation' %}">Crie uma.</a> </p>
 {% endblock %}
