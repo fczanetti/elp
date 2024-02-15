@@ -6,6 +6,7 @@ from engplat import settings
 from engplat.base.models import User
 from engplat.payments.models import UserPayment
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
 
 stripe.api_key = settings.STRIPE_TEST_API_KEY
@@ -13,6 +14,7 @@ YOUR_DOMAIN = 'http://127.0.0.1:8000'
 
 
 @csrf_exempt
+@login_required
 def product_page(request):
     if request.method == 'POST':
         try:
