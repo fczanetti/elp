@@ -7,7 +7,7 @@
 
 {% block scripts %}
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="{% static 'js/checkout.js' %}" defer></script>
+    <script src="{% static 'js/checkout.js' %}" product-slug="{{ prod.slug }}" defer></script>
 {% endblock scripts %}
 
 {% block maincontent %}

@@ -4,7 +4,7 @@ import stripe
 from django.http import HttpResponse
 from engplat import settings
 from engplat.base.models import User
-from engplat.payments.models import UserPayment
+from engplat.payments.models import UserPayment, Product
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 
@@ -15,7 +15,8 @@ YOUR_DOMAIN = 'http://127.0.0.1:8000'
 
 @csrf_exempt
 @login_required
-def product_page(request):
+def product_page(request, slug):
+    prod = Product.objects.get(slug=slug)
     if request.method == 'POST':
         try:
             session = stripe.checkout.Session.create(
@@ -23,7 +24,7 @@ def product_page(request):
                 ui_mode='embedded',
                 line_items=[
                     {
-                        'price': settings.PRICE_ID_30_DAYS,
+                        'price': prod.stripe_id,
                         'quantity': 1,
                     },
                 ],
@@ -33,7 +34,7 @@ def product_page(request):
         except Exception as e:
             return str(e)
         return JsonResponse({'clientSecret': session.client_secret})
-    return render(request, 'payments/product_page.html')
+    return render(request, 'payments/product_page.html', {'prod': prod})
 
 
 def return_page(request):
@@ -96,3 +97,8 @@ def stripe_webhook(request):
 
         # TODO: enviar e-mail ao cliente solicitando nova tentativa
     return HttpResponse(status=200)
+
+
+def products(request):
+    products = Product.objects.filter(available=True)
+    return render(request, 'payments/products.html', {'products': products})

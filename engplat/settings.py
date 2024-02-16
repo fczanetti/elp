@@ -208,6 +208,3 @@ STRIPE_TEST_API_KEY = config('STRIPE_TEST_API_KEY', default='secret')
 
 WEBHOOK_SECRET_TEST = config('WEBHOOK_SECRET_TEST', default='secret')
 # TODO: Remover default e configurar variável de ambiente em produção
-
-PRICE_ID_30_DAYS = config('PRICE_ID_30_DAYS', default='secret')
-# TODO: Remover default e configurar variável de ambiente em produção

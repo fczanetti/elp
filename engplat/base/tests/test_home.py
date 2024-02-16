@@ -47,3 +47,10 @@ def test_link_podcasts(resp):
     Certifica de que o link do conteúdo adicional Podcasts está presente na home page.
     """
     assert_contains(resp, f'href="{reverse("podcasts:indice")}"')
+
+
+def test_link_adquirir_acesso(resp):
+    """
+    Certifica de que o link para a página de produtos está disponível.
+    """
+    assert_contains(resp, f'href="{ reverse("payments:products") }">Adquirir acesso')
