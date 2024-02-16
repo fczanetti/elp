@@ -194,6 +194,15 @@
     padding: 5px;
 }
 
+.productbutton {
+    border-radius: 5px;
+    background-color: #5282A3;
+    color: white;
+    border: none;
+    padding: 5px;
+    text-align: center;
+}
+
 #id_new_password1_helptext > ul {
     padding-left: 1rem;
 }

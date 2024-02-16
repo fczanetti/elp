@@ -3,9 +3,12 @@ const stripe = Stripe("pk_test_51OhAamKjQ2xBbvo2Fv2GdibYWYwCRspEgmATtAWfdGMNtxC2
 
 initialize();
 
+
+
 // Create a Checkout Session as soon as the page loads
 async function initialize() {
-  const response = await fetch("/payments/product_page", {
+  const productSlug = document.currentScript.getAttribute("product-slug");
+  const response = await fetch(`/payments/product_page/${productSlug}`, {
     method: "POST",
   });
 
