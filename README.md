@@ -27,6 +27,10 @@ as variáveis de ambiente em produção para que os arquivos estáticos sejam di
 - o projeto foi configurado para que, após feito o deploy, os comandos 'python manage.py collectstatic' e 'python manage.py
 migrate' sejam executados a fim de coletar os arquivos estáticos e rodar as migrações no ambiente de produção. Estes
 comandos se encontram listados no arquivo 'start.sh';
+- para testar o sistema de pagamentos deve ser feito um cadastro na plataforma https://stripe.com/br. Os produtos devem
+ser criados também na plataforma Stripe e cadastrados neste aplicativo através do modelo Product, e o campo "stripe_id"
+deve ser preenchido com o valor do ID do preço do produto disponibilizado pelo Stripe, e não com o ID do produto. Para
+que o produto cadastrado apareça na página de produtos este deve estar com o campo "available" configurado para True;
 
 
 Principais pendências:

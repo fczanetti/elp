@@ -2,6 +2,7 @@ ALLOWED_HOSTS = localhost, 127.0.0.1,
 SECRET_KEY = secret
 DEBUG = True
 DATABASE_URL = postgres://postuser:postpass@localhost:5432/postci
+CSRF_TRUSTED_ORIGINS =
 
 # Configurações do AWS
 AWS_ACCESS_KEY_ID =
