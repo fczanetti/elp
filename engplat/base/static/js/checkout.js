@@ -3,8 +3,6 @@ const stripe = Stripe("pk_test_51OhAamKjQ2xBbvo2Fv2GdibYWYwCRspEgmATtAWfdGMNtxC2
 
 initialize();
 
-
-
 // Create a Checkout Session as soon as the page loads
 async function initialize() {
   const productSlug = document.currentScript.getAttribute("product-slug");

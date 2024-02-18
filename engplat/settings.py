@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-CSRF_TRUSTED_ORIGINS = ['https://engplat.fly.dev']
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', cast=Csv())
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
