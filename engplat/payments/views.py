@@ -29,6 +29,7 @@ def product_page(request, slug):
                     },
                 ],
                 mode='payment',
+                metadata={'prod_id': prod.id},
                 return_url=YOUR_DOMAIN + '/payments/return_page?session_id={CHECKOUT_SESSION_ID}',
             )
         except Exception as e:
@@ -67,8 +68,10 @@ def stripe_webhook(request):
         session = event['data']['object']
         session_id = session.get('id', None)
         user_email = session.customer_email
+        prod_id = session.metadata['prod_id']
+        prod = Product.objects.get(id=prod_id)
         user = User.objects.get(email=user_email)
-        user_payment = UserPayment(user=user, stripe_checkout_id=session_id)
+        user_payment = UserPayment(user=user, stripe_checkout_id=session_id, product=prod)
         user_payment.save()
 
         if session.payment_status == 'paid':

@@ -5,7 +5,7 @@ from ordered_model.admin import OrderedModelAdmin
 
 @admin.register(UserPayment)
 class UserPaymentAdmin(admin.ModelAdmin):
-    list_display = ['user', 'payment_bool', 'stripe_checkout_id']
+    list_display = ['user', 'payment_bool', 'product', 'stripe_checkout_id', 'created_at', 'updated_at']
 
 
 @admin.register(Product)
