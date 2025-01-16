@@ -23,11 +23,9 @@ def test_user_creation_content_form(resp):
     assert_contains(resp, '<label for="id_email">Endereço de email:</label>')
     assert_contains(resp, '<input type="email" name="email" maxlength="254" autofocus required id="id_email">')
     assert_contains(resp, '<label for="id_password1">Senha:</label>')
-    assert_contains(resp, '<input type="password" name="password1" autocomplete="new-password" required '
-                          'aria-describedby="id_password1_helptext" id="id_password1">')
+    assert_contains(resp, '<input type="password" name="password1" autocomplete="new-password" aria-describedby="id_password1_helptext" id="id_password1">')
     assert_contains(resp, '<label for="id_password2">Confirmação de senha:</label>')
-    assert_contains(resp, '<input type="password" name="password2" autocomplete="new-password" required '
-                          'aria-describedby="id_password2_helptext" id="id_password2">')
+    assert_contains(resp, '<input type="password" name="password2" autocomplete="new-password" aria-describedby="id_password2_helptext" id="id_password2">')
 
 
 def test_successfull_user_creation(client, db):

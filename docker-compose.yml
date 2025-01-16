@@ -2,7 +2,7 @@ services:
 
   database:
     container_name: engplat_db
-    image: postgres
+    image: postgres:16.3
     restart: no
     volumes:
       - ./.pgdata:/var/lib/postgresql/data
@@ -12,4 +12,4 @@ services:
       - POSTGRES_USER=maindbuser
       - POSTGRES_DB=engpmaindb
     ports:
-      - 5435:5432
+      - 5432:5432

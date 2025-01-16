@@ -17,7 +17,6 @@ sentry-sdk = {extras = ["django"], version = "*"}
 django-ordered-model = "*"
 ipython = "*"
 django-extensions = "*"
-stripe = "*"
 
 [dev-packages]
 flake8 = "*"
