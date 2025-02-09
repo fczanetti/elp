@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import make_password
+from django.core.files.storage import default_storage
 
 
 class UserManager(BaseUserManager):
@@ -100,8 +101,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class File(models.Model):
-    title = models.CharField(max_length=72)
-    file = models.FileField(upload_to="files/")
+    title = models.CharField(max_length=72, unique=True, verbose_name="Título")
+    file = models.FileField(upload_to="files/", verbose_name="Arquivo")
 
     def __str__(self):
         return self.title
+
+    @property
+    def file_url(self):
+        return default_storage.url(self.file.name)

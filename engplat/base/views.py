@@ -9,9 +9,10 @@ from django.contrib.auth.views import (
     PasswordResetConfirmView,
     PasswordResetCompleteView,
 )
-from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
-from engplat.base.forms import MyUserCreationForm, FileModelForm
+from engplat.base.forms import MyUserCreationForm
+from engplat.base.models import File
 
 
 def home(request):
@@ -71,15 +72,7 @@ def user_created(request):
     return render(request, 'registration/user_created.html')
 
 
+@login_required
 def files(request):
-    if request.method == "POST":
-        form = FileModelForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Arquivo salvo com sucesso.")
-        else:
-            messages.warning(request, "Verifique os erros e tente novamente.")
-            return render(request, "base/files.html", {"form": form})
-
-    form = FileModelForm()
-    return render(request, "base/files.html", {"form": form})
+    files = File.objects.all()
+    return render(request, "base/files.html", {"files": files})
