@@ -77,6 +77,9 @@ def files(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Arquivo salvo com sucesso.")
-
+        else:
+            messages.warning(request, "Verifique os erros e tente novamente.")
+            return render(request, "base/files.html", {"form": form})
+        
     form = FileModelForm()
     return render(request, "base/files.html", {"form": form})

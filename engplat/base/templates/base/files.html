@@ -21,18 +21,19 @@
 </div>
 {% endif %}
 
-    <form action="" method="post", enctype="multipart/form-data">{% csrf_token %}
+    <form class="customform" action="" method="post", enctype="multipart/form-data">{% csrf_token %}
         
-        {{ form.title.label_tag }}
-        {{ form.title }}
-        {{ form.title.errors }}
+        <div class="labelinputpair">
+            <div>{{ form.title.label_tag }}</div>
+            <div class="inputbox">{{ form.title }}</div>
+            {{ form.title.errors }}
+        </div>
+        <div class="labelinputpair">
+            <div class="inputbox">{{ form.file }}</div>
+            {{ form.file.errors }}
+        </div>
 
-        {{ form.file.label_tag }}
-        {{ form.file }}
-        {{ form.file.errors }}
-
-
-        <button type="submit">Salvar</button>
+        <button type="submit" class="align-self-end formbutton">Salvar</button>
     </form>
 
 {% endblock %}
