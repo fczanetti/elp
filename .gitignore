@@ -163,3 +163,4 @@ staticfiles/
 **/*.Identifier
 
 .pgdata/
+mediafiles/

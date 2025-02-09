@@ -13,27 +13,17 @@
 
 {% block maincontent %}
 
-{% if messages %}
-<div class="col-12">
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
-    {% endfor %}
-</div>
-{% endif %}
+    <h1 class="pb-3 mt-5">Arquivos para download</h1>
 
-    <form class="customform" action="" method="post", enctype="multipart/form-data">{% csrf_token %}
-        
-        <div class="labelinputpair">
-            <div>{{ form.title.label_tag }}</div>
-            <div class="inputbox">{{ form.title }}</div>
-            {{ form.title.errors }}
-        </div>
-        <div class="labelinputpair">
-            <div class="inputbox">{{ form.file }}</div>
-            {{ form.file.errors }}
-        </div>
-
-        <button type="submit" class="align-self-end formbutton">Salvar</button>
-    </form>
+    <ol class="ps-3 rounded mt-3 indexlist">
+        {% for file in files %}
+            <li class="pt-1 pb-1 fw-medium">
+                <a class="text-decoration-none lh-lg fw-medium"
+                    href="{{ file.file_url }}">{{ file.title }}</a>
+            </li>
+        {% empty %} 
+            <p>Ainda não existem arquivos para download.</p>
+        {% endfor %}
+    </ol>
 
 {% endblock %}
