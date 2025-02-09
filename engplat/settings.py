@@ -158,7 +158,7 @@ if AWS_ACCESS_KEY_ID:
         "default": {
             "BACKEND": "storages.backends.s3.S3Storage",
             "OPTIONS": {
-            "bucket_name": AWS_STORAGE_BUCKET_NAME,
+                "bucket_name": AWS_STORAGE_BUCKET_NAME,
             },
         },
         "staticfiles": {
