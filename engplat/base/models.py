@@ -97,3 +97,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     def email_user(self, subject, message, from_email=None, **kwargs):
         """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+
+class File(models.Model):
+    title = models.CharField(max_length=72)
+    file = models.FileField(upload_to="files/")
+
+    def __str__(self):
+        return self.title
