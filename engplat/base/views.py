@@ -80,6 +80,6 @@ def files(request):
         else:
             messages.warning(request, "Verifique os erros e tente novamente.")
             return render(request, "base/files.html", {"form": form})
-        
+
     form = FileModelForm()
     return render(request, "base/files.html", {"form": form})
