@@ -1,9 +1,17 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.contrib.auth.views import LoginView, PasswordResetView, PasswordChangeView, LogoutView, \
-    PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+from django.contrib.auth.views import (
+    LoginView,
+    PasswordResetView,
+    PasswordChangeView,
+    LogoutView,
+    PasswordResetDoneView,
+    PasswordResetConfirmView,
+    PasswordResetCompleteView,
+)
+from django.contrib import messages
 
-from engplat.base.forms import MyUserCreationForm
+from engplat.base.forms import MyUserCreationForm, FileModelForm
 
 
 def home(request):
@@ -64,4 +72,11 @@ def user_created(request):
 
 
 def files(request):
-    return render(request, "base/files.html")
+    if request.method == "POST":
+        form = FileModelForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Arquivo salvo com sucesso.")
+
+    form = FileModelForm()
+    return render(request, "base/files.html", {"form": form})
