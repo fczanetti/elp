@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}<title>Arquivos</title>{% endblock %}
+
+{% block breadcrumb %}
+    <nav aria-label="breadcrumb" class="bg-secondary-subtle mb-3 p-3">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a class="text-decoration-none" href="{% url 'base:home' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Arquivos</li>
+        </ol>
+    </nav>
+{% endblock breadcrumb %}
+
+{% block maincontent %}
+
+{% endblock %}

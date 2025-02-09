@@ -61,3 +61,7 @@ def user_creation(request):
 
 def user_created(request):
     return render(request, 'registration/user_created.html')
+
+
+def files(request):
+    return render(request, "base/files.html")
